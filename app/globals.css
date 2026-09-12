@@ -1,0 +1,86 @@
+/* app/globals.css */
+
+@import "tailwindcss";
+
+@theme {
+  /* ── Blaq GYM brand tokens ─────────────────────────────────────── */
+  --color-bg:               #07080a;
+  --color-surface:          #101114;
+  --color-surface-elevated: #17181c;
+  --color-border:           #232429;
+  --color-border-strong:    #313339;
+
+  /* Blaq GYM energy accent */
+  --color-blaze:            #e11d2e;
+  --color-blaze-dark:       #96121f;
+  /* Blaqs Kitchen accent */
+  --color-brass:            #d4a44c;
+  --color-brass-dark:       #9c7530;
+
+  --color-text:             #f3f2ef;
+  --color-text-muted:       #9c9ba0;
+  --color-text-faint:       #5c5b60;
+
+  --color-warn:             #f59e0b;
+  --color-danger:           #ef4444;
+  --color-success:          #22c55e;
+
+  --gradient-hero-scrim: linear-gradient(180deg, rgba(7,8,10,0.2) 0%, rgba(7,8,10,0.55) 55%, #07080a 100%);
+  --gradient-card: linear-gradient(160deg, rgba(255,255,255,0.03), rgba(255,255,255,0) 45%), #0c0d10;
+
+  --font-display: var(--font-display-src), "Arial Narrow", system-ui, sans-serif;
+  --font-body:    var(--font-body-src), "Segoe UI", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  color-scheme: dark;
+  background: var(--color-bg);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-blaze);
+  color: #fff;
+}
+
+/* Diagonal track-lane divider — a recurring structural motif between
+   sections, standing in for the running-track lane lines / gym-floor
+   markings rather than a generic straight rule. */
+.lane-divider {
+  position: relative;
+  height: 64px;
+  overflow: hidden;
+}
+.lane-divider svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blaze);
+  outline-offset: 2px;
+}
