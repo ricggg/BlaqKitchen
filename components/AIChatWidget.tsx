@@ -8,7 +8,7 @@ type Msg = { role: "user" | "assistant"; text: string };
 
 const INTRO: Msg = {
   role: "assistant",
-  text: "Hey! I'm the Blaq GYM assistant. Ask me about classes, membership pricing, trainers, or Blaqs Kitchen — or I can help you book a session.",
+  text: "Hey! I'm the Blag GYM assistant. Ask me about classes, membership pricing, trainers, or Blags Kitchen — or I can help you book a session.",
 };
 
 export default function AIChatWidget() {
@@ -74,7 +74,7 @@ export default function AIChatWidget() {
           >
             <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--color-border)] bg-[var(--color-surface-elevated)]">
               <Dumbbell size={18} className="text-[var(--color-blaze)]" />
-              <p className="text-sm font-semibold text-[var(--color-text)]">Blaq GYM Assistant</p>
+              <p className="text-sm font-semibold text-[var(--color-text)]">Blag GYM Assistant</p>
             </div>
 
             <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3">

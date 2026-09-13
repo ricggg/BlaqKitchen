@@ -30,7 +30,7 @@ export default function KitchenTeaser() {
       <LaneDivider accent="var(--color-brass)" />
       <div className="mx-auto max-w-7xl px-5 md:px-8 py-20 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="text-sm text-[var(--color-brass)] mb-2">Blaqs Kitchen</p>
+          <p className="text-sm text-[var(--color-brass)] mb-2">Blags Kitchen</p>
           <h2 className="font-[family-name:var(--font-display)] uppercase text-3xl sm:text-4xl text-[var(--color-text)] max-w-md text-balance">
             Meals built for the work you just put in
           </h2>

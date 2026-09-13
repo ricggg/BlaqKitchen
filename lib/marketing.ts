@@ -20,7 +20,7 @@ export const TRAINERS: Trainer[] = [
     slug: "coach-amaka",
     name: "Coach Amaka",
     specialty: "HIIT & Conditioning",
-    bio: "Runs the highest-energy floor at Blaq GYM. Amaka's circuits are built to build engine and torch fat in 45 minutes flat.",
+    bio: "Runs the highest-energy floor at Blag GYM. Amaka's circuits are built to build engine and torch fat in 45 minutes flat.",
     experience: "6 years coaching",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?fm=jpg&q=70&w=600&auto=format&fit=crop",
   },
@@ -46,12 +46,12 @@ export const TESTIMONIALS = [
   {
     name: "Chidinma Okafor",
     role: "Monthly Unlimited member · 8 months",
-    quote: "Blaq GYM is the first gym I've actually stuck with. The coaches remember your name and your numbers.",
+    quote: "Blag GYM is the first gym I've actually stuck with. The coaches remember your name and your numbers.",
   },
   {
     name: "Tunde Balogun",
     role: "Annual Elite member · 1.5 years",
-    quote: "Training here and eating from Blaqs Kitchen after is the whole reason I finally hit my goal weight.",
+    quote: "Training here and eating from Blags Kitchen after is the whole reason I finally hit my goal weight.",
   },
   {
     name: "Grace Effiong",
@@ -103,7 +103,7 @@ export const FACILITIES = [
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?fm=jpg&q=70&w=700&auto=format&fit=crop",
   },
   {
-    name: "Blaqs Kitchen",
+    name: "Blags Kitchen",
     desc: "In-house restaurant serving high-protein meals right off the floor.",
     image: "https://images.unsplash.com/photo-1665332195309-9d75071138f0?fm=jpg&q=70&w=700&auto=format&fit=crop",
   },

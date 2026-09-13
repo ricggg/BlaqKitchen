@@ -23,7 +23,7 @@ export default function RevenueChart({ data }: { data: RevenuePoint[] }) {
           />
           <Legend wrapperStyle={{ fontSize: 12 }} />
           <Bar dataKey="gym" name="Gym" fill="var(--color-blaze)" radius={[3, 3, 0, 0]} />
-          <Bar dataKey="kitchen" name="Blaqs Kitchen" fill="var(--color-brass)" radius={[3, 3, 0, 0]} />
+          <Bar dataKey="kitchen" name="Blags Kitchen" fill="var(--color-brass)" radius={[3, 3, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

@@ -46,7 +46,7 @@ export default async function DashboardOverview() {
           <p className="text-xs text-[var(--color-text-muted)] mt-1">Keep the streak going</p>
         </div>
         <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
-          <p className="text-xs text-[var(--color-text-faint)]">Blaqs Kitchen credit</p>
+          <p className="text-xs text-[var(--color-text-faint)]">Blags Kitchen credit</p>
           <p className="mt-1 font-[family-name:var(--font-display)] text-xl text-[var(--color-brass)]">
             ₦{profile.kitchenCreditsNaira.toLocaleString()}
           </p>
@@ -90,7 +90,7 @@ export default async function DashboardOverview() {
           <UtensilsCrossed size={20} className="text-[var(--color-brass)]" />
           <div>
             <p className="font-medium text-[var(--color-text)]">Hungry after your next session?</p>
-            <p className="text-sm text-[var(--color-text-muted)]">Order ahead from Blaqs Kitchen.</p>
+            <p className="text-sm text-[var(--color-text-muted)]">Order ahead from Blags Kitchen.</p>
           </div>
         </div>
         <Link

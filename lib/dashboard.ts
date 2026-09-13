@@ -5,7 +5,7 @@ export type UpcomingBooking = {
   date: string; // "Mon, 15 Sep"
   time: string;
   trainer: string;
-  status: "confirmed" | "cancelled";
+  status: "confirmed" | "cancelled" | "waitlisted";
 };
 
 export type MemberProfile = {
@@ -15,6 +15,7 @@ export type MemberProfile = {
   planRenews: string | null;
   classesThisMonth: number;
   kitchenCreditsNaira: number;
+  frozen: boolean;
 };
 
 /**
@@ -25,11 +26,12 @@ export type MemberProfile = {
  */
 export const DEMO_PROFILE: MemberProfile = {
   fullName: "Member",
-  email: "member@blaqgym.com",
+  email: "member@blaggym.com",
   plan: "Monthly Unlimited",
   planRenews: "3 Oct 2026",
   classesThisMonth: 9,
   kitchenCreditsNaira: 4500,
+  frozen: false,
 };
 
 export const DEMO_UPCOMING: UpcomingBooking[] = [

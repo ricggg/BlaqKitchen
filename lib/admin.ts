@@ -63,7 +63,7 @@ export const ADMIN_TRAINERS: AdminTrainer[] = [
 
 export const ADMIN_PAYMENTS: AdminPayment[] = [
   { id: "p1", customer: "Chidinma Okafor", description: "Monthly Unlimited — renewal", amountNaira: 45000, status: "success", date: "Today · 09:12" },
-  { id: "p2", customer: "Grace Effiong", description: "Blaqs Kitchen order", amountNaira: 12600, status: "success", date: "Today · 13:02" },
+  { id: "p2", customer: "Grace Effiong", description: "Blags Kitchen order", amountNaira: 12600, status: "success", date: "Today · 13:02" },
   { id: "p3", customer: "Tunde Balogun", description: "Annual Elite — renewal", amountNaira: 420000, status: "pending", date: "Yesterday · 17:44" },
   { id: "p4", customer: "Emeka Nwosu", description: "Pay As You Train — session", amountNaira: 6000, status: "failed", date: "Yesterday · 08:20" },
 ];

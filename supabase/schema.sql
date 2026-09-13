@@ -1,4 +1,4 @@
--- Blaq GYM — core schema (Batch 2: booking + auth)
+-- Blag GYM — core schema (Batch 2: booking + auth)
 -- Run in the Supabase SQL editor for your project.
 
 create table if not exists public.trainers (
@@ -72,7 +72,7 @@ create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
 
--- ── Blaqs Kitchen — menu + ordering (Batch 4) ─────────────────────────
+-- ── Blags Kitchen — menu + ordering (Batch 4) ─────────────────────────
 
 create table if not exists public.menu_items (
   id uuid primary key default gen_random_uuid(),
@@ -145,7 +145,7 @@ alter table public.kitchen_orders
 
 -- ── Payments (Batch 5) ─────────────────────────────────────────────────
 -- One row per verified Paystack transaction, for either a membership
--- renewal or a Blaqs Kitchen order.
+-- renewal or a Blags Kitchen order.
 
 create table if not exists public.payments (
   id uuid primary key default gen_random_uuid(),
@@ -469,9 +469,9 @@ values
   ('pay_as_you_go', 'Pay As You Train', 'Drop in for any single class, no commitment.', 6000, 'one_off',
    '["Any single class", "Guest pass friendly", "No commitment"]', 1, 0, 0),
   ('monthly', 'Monthly Unlimited', 'Unlimited classes, every month.', 45000, 'monthly',
-   '["Unlimited classes", "10% off Blaqs Kitchen", "Free locker"]', 2, 0, 0),
+   '["Unlimited classes", "10% off Blags Kitchen", "Free locker"]', 2, 0, 0),
   ('annual', 'Annual Elite', 'Unlimited classes and a PT session, every month, for a year.', 420000, 'annual',
-   '["Unlimited classes", "1 PT session/month", "20% off Blaqs Kitchen"]', 4, 12, 0)
+   '["Unlimited classes", "1 PT session/month", "20% off Blags Kitchen"]', 4, 12, 0)
 on conflict (code) do update set
   name = excluded.name,
   description = excluded.description,
@@ -481,3 +481,94 @@ on conflict (code) do update set
   guest_passes = excluded.guest_passes,
   personal_training_sessions = excluded.personal_training_sessions,
   kitchen_credit_naira = excluded.kitchen_credit_naira;
+
+-- ── Batch 9 — Class scheduling & booking engine ─────────────────────
+-- The booking API already re-checks these server-side (never trust the
+-- client), but a DB-level trigger is defense-in-depth: it protects the
+-- data even against a future code path (a script, another service, a
+-- bug) that inserts into `bookings` directly.
+
+-- Freeze support for Batch 8 membership management (cancel already
+-- existed; freeze/resume was still missing).
+alter table public.membership_subscriptions
+  add column if not exists frozen_at timestamptz;
+alter table public.profiles
+  add column if not exists membership_frozen boolean not null default false;
+
+create or replace function public.enforce_class_capacity()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_capacity integer;
+  v_booked integer;
+begin
+  if new.status = 'cancelled' or new.status = 'waitlisted' then
+    return new;
+  end if;
+
+  select capacity into v_capacity from public.classes where id = new.class_id;
+
+  if v_capacity is null then
+    raise exception 'Class % does not exist', new.class_id;
+  end if;
+
+  select count(*) into v_booked
+  from public.bookings
+  where class_id = new.class_id
+    and booking_date = new.booking_date
+    and status <> 'cancelled'
+    and id is distinct from new.id;
+
+  if v_booked >= v_capacity then
+    raise exception 'Class is fully booked for %', new.booking_date
+      using errcode = '23514'; -- check_violation, mapped to a friendly 409 in the API route
+  end if;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_enforce_class_capacity on public.bookings;
+create trigger trg_enforce_class_capacity
+  before insert or update on public.bookings
+  for each row execute function public.enforce_class_capacity();
+
+-- Waitlist: when a confirmed booking is cancelled, promote the
+-- longest-waiting 'waitlisted' row for the same class/date to
+-- 'confirmed'. Runs as the same trusted definer as the capacity check;
+-- the API also does this so the member gets an immediate response, but
+-- this covers any cancellation path (admin tools, future code) too.
+create or replace function public.promote_next_waitlisted()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_next_id uuid;
+begin
+  if new.status = 'cancelled' and old.status <> 'cancelled' then
+    select id into v_next_id
+    from public.bookings
+    where class_id = new.class_id
+      and booking_date = new.booking_date
+      and status = 'waitlisted'
+    order by created_at asc
+    limit 1;
+
+    if v_next_id is not null then
+      update public.bookings set status = 'confirmed' where id = v_next_id;
+    end if;
+  end if;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_promote_next_waitlisted on public.bookings;
+create trigger trg_promote_next_waitlisted
+  after update on public.bookings
+  for each row execute function public.promote_next_waitlisted();

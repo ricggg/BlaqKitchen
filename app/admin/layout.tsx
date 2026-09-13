@@ -18,7 +18,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   await requireAdmin();
 
   return (
-    <DashboardShell title="Admin" eyebrow="Blaq GYM HQ" navItems={NAV}>
+    <DashboardShell title="Admin" eyebrow="Blag GYM HQ" navItems={NAV}>
       {children}
     </DashboardShell>
   );

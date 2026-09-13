@@ -32,7 +32,7 @@ export default function TransformationsSection({ showAllLink = true }: { showAll
               </div>
               <div className="p-5">
                 <p className="font-medium text-[var(--color-text)]">{t.name}</p>
-                <p className="text-xs text-[var(--color-text-faint)] mt-0.5">{t.duration} at Blaq GYM</p>
+                <p className="text-xs text-[var(--color-text-faint)] mt-0.5">{t.duration} at Blag GYM</p>
                 <p className="mt-2 text-sm text-[var(--color-text-muted)] leading-relaxed">{t.result}</p>
               </div>
             </div>

@@ -30,7 +30,7 @@ export default async function AdminOverview() {
 
       <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
         <p className="font-semibold text-[var(--color-text)] mb-1">Revenue this week</p>
-        <p className="text-xs text-[var(--color-text-faint)] mb-6">Gym memberships vs. Blaqs Kitchen</p>
+        <p className="text-xs text-[var(--color-text-faint)] mb-6">Gym memberships vs. Blags Kitchen</p>
         <RevenueChart data={revenue} />
       </div>
     </div>

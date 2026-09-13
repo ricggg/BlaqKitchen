@@ -15,20 +15,34 @@ export default function BookingModal({
   onClose: () => void;
 }) {
   const { user } = useAuth();
-  const [status, setStatus] = useState<"idle" | "booking" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "booking" | "done" | "waitlisted" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [errorCode, setErrorCode] = useState<string | null>(null);
   const spotsLeft = gymClass.capacity - gymClass.booked;
 
-  async function confirmBooking() {
+  async function confirmBooking(joinWaitlist = false) {
     setStatus("booking");
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ classId: gymClass.id }),
+        body: JSON.stringify({ classId: gymClass.id, joinWaitlist }),
       });
-      if (!res.ok) throw new Error();
-      setStatus("done");
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        // Show whatever the server actually rejected the booking for —
+        // e.g. "You need an active membership to book a class." — instead
+        // of a generic message, since these are meaningfully different
+        // actions for the user (join a plan vs. pick another class).
+        setErrorMessage(body?.error ?? "Couldn't confirm that booking — try again.");
+        setErrorCode(body?.code ?? null);
+        setStatus("error");
+        return;
+      }
+      setStatus(body?.waitlisted ? "waitlisted" : "done");
     } catch {
+      setErrorMessage("Couldn't confirm that booking — try again.");
+      setErrorCode(null);
       setStatus("error");
     }
   }
@@ -73,6 +87,11 @@ export default function BookingModal({
               <CalendarCheck size={18} />
               You&rsquo;re booked. See you on the floor.
             </div>
+          ) : status === "waitlisted" ? (
+            <div className="mt-6 flex items-center gap-2 rounded-sm border border-[var(--color-warn)]/30 bg-[var(--color-warn)]/10 px-4 py-3 text-sm text-[var(--color-warn)]">
+              <CalendarCheck size={18} />
+              You&rsquo;re on the waitlist. We&rsquo;ll confirm you automatically if a spot opens up.
+            </div>
           ) : !user ? (
             <div className="mt-6">
               <p className="text-sm text-[var(--color-text-muted)] mb-3">
@@ -88,21 +107,39 @@ export default function BookingModal({
           ) : (
             <div className="mt-6">
               {status === "error" && (
-                <p className="text-sm text-[var(--color-danger)] mb-3">
-                  Couldn&rsquo;t confirm that booking — try again.
-                </p>
+                <p className="text-sm text-[var(--color-danger)] mb-3">{errorMessage}</p>
               )}
-              <button
-                onClick={confirmBooking}
-                disabled={status === "booking" || spotsLeft <= 0}
-                className="w-full rounded-sm bg-[var(--color-blaze)] px-4 py-3 text-sm font-semibold text-white hover:bg-[var(--color-blaze-dark)] transition-colors disabled:opacity-60"
-              >
-                {spotsLeft <= 0
-                  ? "Class full"
-                  : status === "booking"
-                  ? "Booking…"
-                  : "Confirm booking"}
-              </button>
+              {status === "error" && errorCode === "NO_MEMBERSHIP" ? (
+                <Link
+                  href="/membership"
+                  className="inline-flex w-full justify-center rounded-sm bg-[var(--color-blaze)] px-4 py-3 text-sm font-semibold text-white hover:bg-[var(--color-blaze-dark)] transition-colors"
+                >
+                  View memberships
+                </Link>
+              ) : status === "error" && errorCode === "FULL" ? (
+                <button
+                  onClick={() => confirmBooking(true)}
+                  className="w-full rounded-sm border border-[var(--color-border-strong)] px-4 py-3 text-sm font-semibold text-[var(--color-text)] hover:border-[var(--color-blaze)] transition-colors disabled:opacity-60"
+                >
+                  Join waitlist
+                </button>
+              ) : spotsLeft <= 0 ? (
+                <button
+                  onClick={() => confirmBooking(true)}
+                  disabled={status === "booking"}
+                  className="w-full rounded-sm border border-[var(--color-border-strong)] px-4 py-3 text-sm font-semibold text-[var(--color-text)] hover:border-[var(--color-blaze)] transition-colors disabled:opacity-60"
+                >
+                  {status === "booking" ? "Joining…" : "Class full — join waitlist"}
+                </button>
+              ) : (
+                <button
+                  onClick={() => confirmBooking(false)}
+                  disabled={status === "booking"}
+                  className="w-full rounded-sm bg-[var(--color-blaze)] px-4 py-3 text-sm font-semibold text-white hover:bg-[var(--color-blaze-dark)] transition-colors disabled:opacity-60"
+                >
+                  {status === "booking" ? "Booking…" : "Confirm booking"}
+                </button>
+              )}
             </div>
           )}
         </motion.div>

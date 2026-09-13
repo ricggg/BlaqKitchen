@@ -52,14 +52,14 @@ export default function Hero() {
             Asaba&rsquo;s strength, food &amp; fitness club
           </p>
           <h1 className="font-[family-name:var(--font-display)] uppercase text-4xl sm:text-6xl lg:text-7xl leading-[0.95] text-[var(--color-text)] text-balance">
-            Train blaq.
+            Train blag.
             <br />
             Eat right.
             <br />
             <span className="text-[var(--color-blaze)]">Live strong.</span>
           </h1>
           <p className="mt-6 max-w-md text-[var(--color-text-muted)] text-base leading-relaxed">
-            Strength training, HIIT, boxing and recovery — with Blaqs Kitchen
+            Strength training, HIIT, boxing and recovery — with Blags Kitchen
             next door for meals built around your program. One membership,
             one app, everything booked in seconds.
           </p>
@@ -118,7 +118,7 @@ export default function Hero() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1545612036-2872840642dc?fm=jpg&q=70&w=1200&auto=format&fit=crop"
-                alt="Blaq's Kitchen &amp; Fitness training floor"
+                alt="Blag's Kitchen &amp; Fitness training floor"
                 fill
                 sizes="(max-width: 768px) 0px, 500px"
                 className="object-cover"
@@ -151,7 +151,7 @@ export default function Hero() {
               style={{ transform: "translateZ(90px)" }}
               className="absolute -right-4 bottom-8 w-48 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-surface-elevated)] p-4 shadow-2xl shadow-black/50"
             >
-              <p className="text-xs text-[var(--color-brass)]">Blaqs Kitchen</p>
+              <p className="text-xs text-[var(--color-brass)]">Blags Kitchen</p>
               <p className="text-sm font-semibold text-[var(--color-text)] mt-1">Post-workout bowl</p>
               <p className="text-xs text-[var(--color-text-muted)] mt-1">Grilled chicken · quinoa</p>
               <p className="text-sm font-semibold text-[var(--color-brass)] mt-2">₦4,500</p>

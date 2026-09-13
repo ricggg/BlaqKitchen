@@ -49,17 +49,20 @@ export default function BookingsList({
         {rows.map((b) => (
           <div key={b.id} className="bg-[var(--color-surface)] px-5 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
             <div className="flex items-center gap-3 min-w-0">
-              <Dumbbell size={16} className={`shrink-0 ${b.status === "cancelled" ? "text-[var(--color-text-faint)]" : "text-[var(--color-blaze)]"}`} />
+              <Dumbbell size={16} className={`shrink-0 ${b.status === "cancelled" ? "text-[var(--color-text-faint)]" : b.status === "waitlisted" ? "text-[var(--color-warn)]" : "text-[var(--color-blaze)]"}`} />
               <div className="min-w-0">
                 <p className={`text-sm font-medium truncate ${b.status === "cancelled" ? "text-[var(--color-text-faint)] line-through" : "text-[var(--color-text)]"}`}>
                   {b.className}
                 </p>
-                <p className="text-xs text-[var(--color-text-faint)] truncate">{b.category} · {b.trainer}</p>
+                <p className="text-xs text-[var(--color-text-faint)] truncate">
+                  {b.category} · {b.trainer}
+                  {b.status === "waitlisted" && <span className="text-[var(--color-warn)]"> · Waitlisted</span>}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-4 shrink-0">
               <p className="text-sm text-[var(--color-text-muted)]">{b.date} · {b.time}</p>
-              {tab === "upcoming" && b.status === "confirmed" && (
+              {tab === "upcoming" && (b.status === "confirmed" || b.status === "waitlisted") && (
                 <button
                   onClick={() => cancel(b.id)}
                   disabled={isPending}

@@ -83,7 +83,7 @@ export async function getAdminPayments(): Promise<AdminPayment[]> {
   return data.map((p: any) => ({
     id: p.id,
     customer: p.profiles?.full_name || "Member",
-    description: p.purpose === "membership" ? "Membership — renewal" : "Blaqs Kitchen order",
+    description: p.purpose === "membership" ? "Membership — renewal" : "Blags Kitchen order",
     amountNaira: p.amount_naira,
     status: p.status,
     date: new Date(p.created_at).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }),

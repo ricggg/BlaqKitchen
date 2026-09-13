@@ -28,7 +28,7 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
     name: "Monthly Unlimited",
     priceNaira: 45000,
     period: "/month",
-    features: ["Unlimited classes", "10% off Blaqs Kitchen", "Free locker"],
+    features: ["Unlimited classes", "10% off Blags Kitchen", "Free locker"],
     highlight: true,
   },
   {
@@ -36,7 +36,7 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
     name: "Annual Elite",
     priceNaira: 420000,
     period: "/year",
-    features: ["Unlimited classes", "1 PT session/month", "20% off Blaqs Kitchen"],
+    features: ["Unlimited classes", "1 PT session/month", "20% off Blags Kitchen"],
   },
 ];
 
@@ -64,6 +64,6 @@ export type BillingRecord = {
 
 export const DEMO_BILLING: BillingRecord[] = [
   { id: "pay1", description: "Monthly Unlimited — renewal", amountNaira: 45000, status: "success", date: "3 Sep 2026" },
-  { id: "pay2", description: "Blaqs Kitchen order", amountNaira: 6700, status: "success", date: "1 Sep 2026" },
+  { id: "pay2", description: "Blags Kitchen order", amountNaira: 6700, status: "success", date: "1 Sep 2026" },
   { id: "pay3", description: "Monthly Unlimited — renewal", amountNaira: 45000, status: "success", date: "3 Aug 2026" },
 ];

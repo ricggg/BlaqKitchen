@@ -71,7 +71,7 @@ export default function LoginPage() {
         </form>
 
         <p className="mt-6 text-sm text-[var(--color-text-muted)]">
-          New to Blaq GYM?{" "}
+          New to Blag GYM?{" "}
           <Link href="/signup" className="text-[var(--color-text)] font-medium">
             Create an account
           </Link>

@@ -25,7 +25,7 @@ export default function KitchenPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-sm text-[var(--color-brass)] mb-3"
           >
-            Blaqs Kitchen
+            Blags Kitchen
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 16 }}

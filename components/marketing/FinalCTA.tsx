@@ -10,7 +10,7 @@ export default function FinalCTA() {
             Your first session is waiting
           </h2>
           <p className="mt-4 max-w-md mx-auto text-[var(--color-text-muted)] leading-relaxed">
-            Pick a class, meet a coach, and see why 1,200+ members train at Blaq GYM.
+            Pick a class, meet a coach, and see why 1,200+ members train at Blag GYM.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link

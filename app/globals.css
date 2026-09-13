@@ -3,17 +3,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Blaq GYM brand tokens ─────────────────────────────────────── */
+  /* ── Blag GYM brand tokens ─────────────────────────────────────── */
   --color-bg:               #07080a;
   --color-surface:          #101114;
   --color-surface-elevated: #17181c;
   --color-border:           #232429;
   --color-border-strong:    #313339;
 
-  /* Blaq GYM energy accent */
+  /* Blag GYM energy accent */
   --color-blaze:            #e11d2e;
   --color-blaze-dark:       #96121f;
-  /* Blaqs Kitchen accent */
+  /* Blags Kitchen accent */
   --color-brass:            #d4a44c;
   --color-brass-dark:       #9c7530;
 

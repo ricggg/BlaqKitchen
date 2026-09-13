@@ -1,12 +1,12 @@
-# Blaq GYM — Website & Booking Platform
+# Blag GYM — Website & Booking Platform
 
 Built on the same stack as your AVSPro project: **Next.js 14 (App Router) + Tailwind CSS v4 + Framer Motion + Supabase**.
 
 ## This delivery: Batch 1 — Design system & homepage
-- Full design token system (`app/globals.css`) — Blaq GYM (crimson) + Blaqs Kitchen (brass) brand colors
+- Full design token system (`app/globals.css`) — Blag GYM (crimson) + Blags Kitchen (brass) brand colors
 - Responsive Navbar + Footer
 - Hero section with cursor-driven 3D tilt/parallax card stack (Framer Motion)
-- Programs section, Blaqs Kitchen teaser, Membership pricing
+- Programs section, Blags Kitchen teaser, Membership pricing
 - Floating AI Chat widget (UI complete, backend wiring comes in Batch 5)
 
 ## Run it
@@ -21,7 +21,7 @@ Then open http://localhost:3000
 ## Roadmap (next batches)
 - **Batch 2:** Class & personal-training booking flow, Supabase auth (sign up/login), schedule calendar
 - **Batch 3:** Member dashboard (bookings, plan, payment history) + Admin dashboard (classes, trainers, members, revenue)
-- **Batch 4:** Blaqs Kitchen full menu, cart, order-ahead + table reservations
+- **Batch 4:** Blags Kitchen full menu, cart, order-ahead + table reservations
 - **Batch 5:** Payments/subscriptions (card + local NG payment rails) and live AI chat backend (booking-aware assistant)
 
 ## Structure
@@ -50,7 +50,7 @@ Demo class data lives in `lib/classes.ts` so `/schedule` works before Supabase i
 
 All dashboard data is mocked in `lib/dashboard.ts` / `lib/admin.ts` — swap for real Supabase queries once bookings/profiles have live rows.
 
-## Batch 4 — Blaqs Kitchen menu & ordering (added)
+## Batch 4 — Blags Kitchen menu & ordering (added)
 - `/kitchen` — full menu page: category tabs (Bowls, Grills, Smoothies, Snacks, Drinks), animated item cards, floating cart button
 - `lib/cart-context.tsx` — global cart (add/remove/qty), persisted to `localStorage`, provided app-wide from `app/layout.tsx`
 - `components/CartDrawer.tsx` — slide-in cart, reachable from the new cart icon in `Navbar` on every page
@@ -70,7 +70,7 @@ Demo menu + order data lives in `lib/kitchen.ts` — swap `DEMO_MENU` for `supab
   - `POST /api/payments/verify` — verifies the transaction server-side (real verify call to Paystack when `PAYSTACK_SECRET_KEY` is set, trusted in demo mode otherwise), records a row in `payments`, and applies the effect (membership renewal or order payment)
   - `/dashboard/membership` — plan + billing history; `/admin/payments` — all transactions across the gym
   - `supabase/schema.sql` — added `payments` table + RLS, and a `payment_status` column on `kitchen_orders`
-- **Live AI chat:** `app/api/chat/route.ts` calls the Anthropic Messages API using `ANTHROPIC_API_KEY`, grounded in the real class schedule, membership pricing, and Blaqs Kitchen menu (`lib/chat-context.ts` builds the system prompt from `lib/classes.ts` / `lib/kitchen.ts` / `lib/payments.ts`, so it never invents prices or classes)
+- **Live AI chat:** `app/api/chat/route.ts` calls the Anthropic Messages API using `ANTHROPIC_API_KEY`, grounded in the real class schedule, membership pricing, and Blags Kitchen menu (`lib/chat-context.ts` builds the system prompt from `lib/classes.ts` / `lib/kitchen.ts` / `lib/payments.ts`, so it never invents prices or classes)
   - `AIChatWidget.tsx` now posts the full conversation to `/api/chat` instead of a placeholder timeout
   - No `ANTHROPIC_API_KEY`? The route replies with a friendly "team will follow up" message instead of erroring, so the widget still feels alive in preview
 
@@ -99,7 +99,7 @@ Batch 6 only *adds* tables/policies — re-run the full `supabase/schema.sql` in
 
 ### Left for later batches (intentionally, per the blueprint's own build order)
 
-- `lib/kitchen.ts` (`/kitchen`, `/dashboard/kitchen-orders`, `/admin/kitchen-orders`) still runs on demo arrays — real wiring is scoped to **Batch 23: Blaqs Kitchen production upgrade**, after the membership/booking foundation is solid.
+- `lib/kitchen.ts` (`/kitchen`, `/dashboard/kitchen-orders`, `/admin/kitchen-orders`) still runs on demo arrays — real wiring is scoped to **Batch 23: Blags Kitchen production upgrade**, after the membership/booking foundation is solid.
 - Revenue chart (`REVENUE_SERIES`) stays on demo data until there's enough real payment volume to aggregate meaningfully — real aggregation is **Batch 22: Analytics**.
 - `membership_plans` is seeded with no rows yet — populating it and wiring `/membership` + checkout to it is **Batch 8: Membership engine**, the next batch.
 - Admin member emails aren't shown yet (they live in `auth.users`, which the anon-scoped client can't read) — will be solved properly with a `profiles` view or a narrow service-role RPC in a later pass rather than reaching for the service-role client from a page that doesn't strictly need it today.
@@ -107,7 +107,7 @@ Batch 6 only *adds* tables/policies — re-run the full `supabase/schema.sql` in
 
 ## Batch 7 — Premium Marketing Website (added)
 
-- **Homepage rebuilt in the exact 16-section order** from the blueprint: Navbar → Hero → Trust strip → Training goals → Programs → Live schedule preview → Memberships → Personal training → Trainers → Transformations → Facilities → Blaqs Kitchen → App/member platform → Testimonials → Final CTA → Footer. See `app/page.tsx`.
+- **Homepage rebuilt in the exact 16-section order** from the blueprint: Navbar → Hero → Trust strip → Training goals → Programs → Live schedule preview → Memberships → Personal training → Trainers → Transformations → Facilities → Blags Kitchen → App/member platform → Testimonials → Final CTA → Footer. See `app/page.tsx`.
 - **8 new pages**: `/about`, `/classes`, `/trainers`, `/personal-training`, `/facilities`, `/transformations`, `/locations`, `/contact`. `/membership` already existed from Batch 5 and was left as-is.
 - **New reusable marketing components** in `components/marketing/`: `TrustStrip`, `TrainingGoals`, `SchedulePreview`, `PersonalTrainingSection`, `TrainersSection`, `TransformationsSection`, `FacilitiesSection`, `AppPlatformSection`, `TestimonialsSection`, `FinalCTA`, `PageHeader` — shared between the homepage and the new full pages so content isn't duplicated.
 - **Shared content source**: `lib/marketing.ts` (trainers, testimonials, transformations, facilities, PT services, training goals) — one place to edit copy instead of hunting through components.

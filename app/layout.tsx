@@ -24,9 +24,9 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Blaq GYM | Train Blaq. Eat Right. Live Strong.",
+  title: "Blag GYM | Train Blag. Eat Right. Live Strong.",
   description:
-    "Blaq GYM is a modern strength & conditioning club with in-house restaurant Blaqs Kitchen. Book classes, personal training, and meals — all in one place.",
+    "Blag GYM is a modern strength & conditioning club with in-house restaurant Blags Kitchen. Book classes, personal training, and meals — all in one place.",
 };
 
 export default function RootLayout({

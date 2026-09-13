@@ -75,7 +75,7 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
         >
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs text-[var(--color-brass)] mb-1">Blaqs Kitchen</p>
+              <p className="text-xs text-[var(--color-brass)] mb-1">Blags Kitchen</p>
               <h3 className="font-[family-name:var(--font-display)] uppercase text-xl text-[var(--color-text)]">
                 {stage === "pay" ? "Pay for your order" : "Confirm order"}
               </h3>

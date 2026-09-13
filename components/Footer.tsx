@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, Facebook, Twitter } from "lucide-react";
-import BlaqLogo from "./BlaqLogo";
+import BlagLogo from "./BlagLogo";
 
 export default function Footer() {
   return (
@@ -8,13 +8,13 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-5 md:px-8 py-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
         <div>
           <span className="flex items-center gap-2.5">
-            <BlaqLogo size={34} />
+            <BlagLogo size={34} />
             <span className="font-[family-name:var(--font-display)] text-xl text-[var(--color-text)]">
-              BLAQ<span className="text-[var(--color-blaze)]">GYM</span>
+              BLAG<span className="text-[var(--color-blaze)]">GYM</span>
             </span>
           </span>
           <p className="mt-3 text-sm text-[var(--color-text-muted)] max-w-xs leading-relaxed">
-            Blaq&rsquo;s Kitchen &amp; Fitness — good food, fresh drinks and a fit
+            Blag&rsquo;s Kitchen &amp; Fitness — good food, fresh drinks and a fit
             life, all in one place.
           </p>
           <div className="mt-5 flex items-center gap-4 text-[var(--color-text-muted)]">
@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold text-[var(--color-text)] mb-4">Blaqs Kitchen</p>
+          <p className="text-sm font-semibold text-[var(--color-text)] mb-4">Blags Kitchen</p>
           <ul className="space-y-3 text-sm text-[var(--color-text-muted)]">
             <li><Link href="/kitchen">Menu</Link></li>
             <li><Link href="/kitchen/order">Order ahead</Link></li>
@@ -73,7 +73,7 @@ export default function Footer() {
 
       <div className="border-t border-[var(--color-border)]">
         <div className="mx-auto max-w-7xl px-5 md:px-8 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--color-text-faint)]">
-          <p>© {new Date().getFullYear()} Blaq GYM. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Blag GYM. All rights reserved.</p>
           <div className="flex gap-5">
             <Link href="/legal/privacy">Privacy</Link>
             <Link href="/legal/terms">Terms</Link>

@@ -19,7 +19,7 @@ export default function AppPlatformSection() {
             Your whole membership, in one dashboard
           </h2>
           <p className="mt-4 max-w-md text-[var(--color-text-muted)] leading-relaxed">
-            Bookings, workouts, progress, rewards and Blaqs Kitchen orders —
+            Bookings, workouts, progress, rewards and Blags Kitchen orders —
             everything lives in your member dashboard, on the web or your
             phone. No separate apps to juggle.
           </p>

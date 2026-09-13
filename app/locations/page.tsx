@@ -5,7 +5,7 @@ import FinalCTA from "@/components/marketing/FinalCTA";
 export default function LocationsPage() {
   return (
     <div className="bg-[var(--color-bg)]">
-      <PageHeader eyebrow="Visit us" title="Find Blaq GYM" />
+      <PageHeader eyebrow="Visit us" title="Find Blag GYM" />
 
       <section className="mx-auto max-w-4xl px-5 md:px-8 pb-20">
         <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-8 grid sm:grid-cols-3 gap-8">
@@ -40,7 +40,7 @@ export default function LocationsPage() {
 
         <div className="mt-6 rounded-md border border-[var(--color-border)] overflow-hidden h-80">
           <iframe
-            title="Blaq GYM location"
+            title="Blag GYM location"
             className="w-full h-full grayscale contrast-125 opacity-90"
             loading="lazy"
             src="https://www.google.com/maps?q=Church+Street,+Asaba,+Nigeria&output=embed"

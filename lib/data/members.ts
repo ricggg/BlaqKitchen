@@ -14,7 +14,7 @@ export async function getMemberProfile(userId: string, email: string | null): Pr
 
   const { data } = await supabase
     .from("profiles")
-    .select("full_name, membership_plan, membership_expires_at")
+    .select("full_name, membership_plan, membership_expires_at, membership_frozen")
     .eq("id", userId)
     .single();
 
@@ -42,6 +42,7 @@ export async function getMemberProfile(userId: string, email: string | null): Pr
       : null,
     classesThisMonth: classesThisMonth ?? 0,
     kitchenCreditsNaira: 0, // wired up once membership_plans.kitchen_credit lands (Batch 8)
+    frozen: data.membership_frozen ?? false,
   };
 }
 

@@ -5,12 +5,12 @@ import Link from "next/link";
 import { Menu, X, User, ShoppingBag } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 import { useCart } from "@/lib/cart-context";
-import BlaqLogo from "./BlaqLogo";
+import BlagLogo from "./BlagLogo";
 
 const LINKS = [
   { href: "/classes", label: "Classes" },
   { href: "/schedule", label: "Schedule" },
-  { href: "/kitchen", label: "Blaqs Kitchen" },
+  { href: "/kitchen", label: "Blags Kitchen" },
   { href: "/membership", label: "Membership" },
   { href: "/trainers", label: "Trainers" },
 ];
@@ -40,11 +40,11 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-5 md:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <BlaqLogo size={36} />
+          <BlagLogo size={36} />
           <span
             className="font-[family-name:var(--font-display)] text-xl tracking-wide text-[var(--color-text)]"
           >
-            BLAQ<span className="text-[var(--color-blaze)]">GYM</span>
+            BLAG<span className="text-[var(--color-blaze)]">GYM</span>
           </span>
         </Link>
 

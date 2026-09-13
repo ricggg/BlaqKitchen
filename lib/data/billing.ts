@@ -15,7 +15,7 @@ export async function getBillingHistory(userId: string): Promise<BillingRecord[]
 
   return data.map((p: any) => ({
     id: p.id,
-    description: p.purpose === "membership" ? "Membership — payment" : "Blaqs Kitchen order",
+    description: p.purpose === "membership" ? "Membership — payment" : "Blags Kitchen order",
     amountNaira: p.amount_naira,
     status: p.status,
     date: new Date(p.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),

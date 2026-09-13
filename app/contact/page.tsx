@@ -22,7 +22,7 @@ export default function ContactPage() {
 
   return (
     <div className="bg-[var(--color-bg)]">
-      <PageHeader eyebrow="Contact" title="Get in touch" description="Questions about membership, classes or Blaqs Kitchen? We're happy to help." />
+      <PageHeader eyebrow="Contact" title="Get in touch" description="Questions about membership, classes or Blags Kitchen? We're happy to help." />
 
       <section className="mx-auto max-w-5xl px-5 md:px-8 pb-20 grid md:grid-cols-2 gap-10">
         <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-6 space-y-5">
@@ -36,7 +36,7 @@ export default function ContactPage() {
           </div>
           <div className="flex items-start gap-3">
             <Mail size={18} className="text-[var(--color-blaze)] mt-0.5 shrink-0" />
-            <p className="text-sm text-[var(--color-text-muted)]">hello@blaqgym.com</p>
+            <p className="text-sm text-[var(--color-text-muted)]">hello@blaggym.com</p>
           </div>
         </div>
 

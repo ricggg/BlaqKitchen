@@ -5,7 +5,7 @@ import FinalCTA from "@/components/marketing/FinalCTA";
 const VALUES = [
   { icon: Target, title: "Real programming", desc: "No generic classes — every session is coached with a purpose and progression plan." },
   { icon: Users, title: "A club, not a gym chain", desc: "We know our members by name. Small enough to care, serious enough to get results." },
-  { icon: Dumbbell, title: "Training + food, together", desc: "Blaqs Kitchen exists because fitness doesn't end when the workout does." },
+  { icon: Dumbbell, title: "Training + food, together", desc: "Blags Kitchen exists because fitness doesn't end when the workout does." },
 ];
 
 export default function AboutPage() {
@@ -14,7 +14,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About us"
         title="Asaba's strength, food & fitness club"
-        description="Blaq GYM started with a simple idea: training and nutrition should live under one roof, coached by people who actually know your name."
+        description="Blag GYM started with a simple idea: training and nutrition should live under one roof, coached by people who actually know your name."
       />
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 pb-20 grid sm:grid-cols-3 gap-4">
@@ -34,7 +34,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-[var(--color-text-muted)] leading-relaxed max-w-lg mx-auto">
             Open daily from 5:00 AM to 11:00 PM. Certified coaches on the floor
-            at every session, and Blaqs Kitchen serving right through the day.
+            at every session, and Blags Kitchen serving right through the day.
           </p>
         </div>
       </section>
